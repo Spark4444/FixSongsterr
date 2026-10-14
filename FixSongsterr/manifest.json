@@ -6,10 +6,18 @@
   "content_scripts": [
     {
       "matches": ["*://*.songsterr.com/*", "*://songsterr.com/*"],
-      "js": ["content.js"],
+      "js": ["js/script.js"],
       "run_at": "document_idle",
       "all_frames": false
     }
   ],
-  "host_permissions": ["*://*.songsterr.com/*"]
+  "host_permissions": ["*://*.songsterr.com/*"],
+  "icons": {
+    "128": "img/128.png",
+    "96": "img/96.png",
+    "64": "img/64.png",
+    "48": "img/48.png",
+    "32": "img/32.png",
+    "16": "img/16.png"
+  }
 }
