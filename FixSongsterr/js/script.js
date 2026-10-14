@@ -1,6 +1,7 @@
 const styleId = "fixsongsterrStyles";
 
 // Main styles changes
+// Fixes for the retarded new songsterr mobile like ui
 const css = `
 /* Center main panel */
 .Fdftiq_mainPanel {
