@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Songsterr Content Injector",
+  "description": "Injects content.js into songsterr.com pages to modify the site.",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.songsterr.com/*",
+        "*://songsterr.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "host_permissions": [
+    "*://*.songsterr.com/*"
+  ]
+}
