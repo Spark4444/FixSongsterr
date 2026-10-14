@@ -9,7 +9,7 @@
         "*://*.songsterr.com/*",
         "*://songsterr.com/*"
       ],
-      "js": ["content.js"],
+      "js": ["js/script.js"],
       "run_at": "document_idle",
       "all_frames": false
     }
