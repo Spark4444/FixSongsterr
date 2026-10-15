@@ -1,34 +1,39 @@
+// Inject custom fixes for the Songsterr desktop layout to fix mobile-like UI
 const styleId = "fixsongsterrStyles";
 
-const mainPanel = document.querySelector("#tablist").parentElement;
+// The container that holds the main navigation buttons
+const mainPanelContainer = document.querySelector("#tablist").parentElement;
 
-const menuInbox = document.querySelector("#menu-inbox");
-let inboxPopup;
+// The inbox button in the top navigation; clicking opens the inbox popup
+const inboxButton = document.querySelector("#menu-inbox");
+let inboxPopupEl;
 
-function getLocationOfPopup() {
-    const inboxButtonRect = menuInbox.getBoundingClientRect();
+// Compute horizontal left offset (relative to the main panel) for the inbox popup
+function computeInboxPopupLeft() {
+    const inboxButtonRect = inboxButton.getBoundingClientRect();
     const inboxCenterX = inboxButtonRect.width / 2 + inboxButtonRect.x;
 
-    const mainPanelRect = mainPanel.getBoundingClientRect();
+    const mainPanelRect = mainPanelContainer.getBoundingClientRect();
     const offsetFromMainPanel = inboxCenterX - mainPanelRect.x;
 
-    const popupRect = inboxPopup.getBoundingClientRect();
+    const popupRect = inboxPopupEl.getBoundingClientRect();
     const leftOffset = offsetFromMainPanel - popupRect.width / 2;
 
     return leftOffset;
 }
 
-menuInbox.addEventListener("click", (e) => {
-    // defer actual work until after all synchronous listeners have run
+// Defer positioning until after the popup is created by other listeners
+inboxButton.addEventListener("click", (e) => {
     setTimeout(() => {
-        inboxPopup = document.querySelector("#inbox-popup");
-        const popupLocation = getLocationOfPopup();
-        inboxPopup.style.left = `${popupLocation}px`;
+        inboxPopupEl = document.querySelector("#inbox-popup");
+        if (inboxPopupEl) {
+            const popupLocation = computeInboxPopupLeft();
+            inboxPopupEl.style.left = `${popupLocation}px`;
+        }
     }, 0);
-}, false,);
+}, false);
 
-// Main styles changes
-// Fixes for the retarded new songsterr mobile like ui
+// Main style overrides for desktop: center panels, prevent mobile-style dragging, and adjust popups
 const css = `
 /* Center main panel */
 .Fdftiq_mainPanel {
@@ -38,7 +43,7 @@ const css = `
   top: 96px !important;
 }
 
-/* Navigation menu, the parent of tab list centered as well */
+/* Center the navigation menu (parent of #tablist) */
 *:has(>#tablist) {
   top: 10px !important;
   bottom: unset !important;
@@ -47,12 +52,12 @@ const css = `
   transform: translateX(-50%) !important;
 }
 
-/* Remove controls panel handle, we're not using a fucking phone. why the fuck would you add a draggable menu on a desktop website */
+/* Hide draggable controls handle on desktop */
 #controls-panel-handle {
     display: none;
 }
 
-/* Controls panel, stretch it out instead of being on one side, so need to for the handle */
+/* Stretch controls panel to full width and remove mobile shadows */
 #controls {
     width: 97.5vw;
     padding: 10px 0;
@@ -65,18 +70,18 @@ const css = `
     box-shadow: none;
 }
 
-/* Move the main header down so that there's space for the top navigation */
+/* Push main header down to make room for top navigation */
 #header {
     margin: 60px 0 0 0;
 }
 
-/* Prevent the controls from dissappearing on scroll */
+/* Keep controls visible on scroll */
 ._5pcfpW_controlsTopPanelRow {
     visibility: visible !important;
     opacity: 1 !important;
 }
 
-/* Prevent dragging and resize the bottom controls panel */
+/* Prevent bottom controls from collapsing/being draggable */
 .idrtTa_controls {
     max-height: unset !important;
     justify-content: space-around;
@@ -84,7 +89,7 @@ const css = `
     padding: 5px;
 }
 
-/* restyle the video panel */
+/* Restyle the video panel */
 .oCvYpa_panel {
     border-radius: 20px;
     padding: 15px;
@@ -92,39 +97,39 @@ const css = `
     margin: 0 0 10px 0;
 }
 
-/* Center the video panel parent */
+/* Ensure parent of video panel is centered */
 *:has(>.oCvYpa_panel) {
     width: var(--controls-panel-width);
 }
 
-/* resize the bottom panel to be max width */
+/* Make controls card full width */
 .idrtTa_controlsCard {
     width: 100%;
 }
 
-/* inbox popup moved to the top */
+/* Move inbox popup to top area */
 #inbox-popup {
     top: 60px !important;
     bottom: unset !important;
     max-height: unset !important;
 }
 
-/* move the banner for revisions down */
+/* Move revisions banner slightly down */
 ._8e144G_date {
     top: -6px;
 }
 
-/* help menu popup moved down */
+/* Adjust help menu popup vertical position */
 #help-menu {
     bottom: -165px !important;
 }
 
-/* profile popup moved down */
+/* Adjust profile popup vertical position */
 #profile-popup-desktop {
     bottom: -101px !important;
 }
 
-/* removed stupid connector line */
+/* Remove decorative connector line */
 ._6_NcWG_container {
     &:has(._6_NcWG_labelChecked:first-child):before {
         animation: unset !important;
@@ -147,7 +152,7 @@ const css = `
 }
 `;
 
-// Inject the styles into the head
+// Inject the styles into the document head
 const styleEl = document.createElement("style");
 styleEl.id = styleId;
 styleEl.type = "text/css";
