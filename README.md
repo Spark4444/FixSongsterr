@@ -13,8 +13,8 @@ FixSongsterr injects a small block of CSS into Songsterr to restore a more deskt
 
 Use the `git clone` command to copy it onto your computer:
 ```bash
-git clone https://github.com/Spark4444/FandomAdBlocker
+git clone https://github.com/Spark4444/FixSongsterr
 ```
 3. Go to the extensions tab in your browser.
 4. Enable developer mode in the top-right corner.
-5. Press the "Load unpacked" button and select the `FandomAdBlocker` folder from the downloaded files (the one inside the first `FandomAdBlocker` folder). That's it!
+5. Press the "Load unpacked" button and select the `FixSongsterr` folder from the downloaded files (the one inside the first `FixSongsterr` folder). That's it!
