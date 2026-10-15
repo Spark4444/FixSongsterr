@@ -1,5 +1,37 @@
 const styleId = "fixsongsterrStyles";
 
+const menuInbox = document.querySelector("#menu-inbox");
+let inboxPopup;
+const mainPanel = document.querySelector("#tablist").parentElement;
+
+let popupToggle = false;
+
+function getLocationOfPopup() {
+    const inboxButtonRect = menuInbox.getBoundingClientRect();
+    const inboxCenterX = inboxButtonRect.width / 2 + inboxButtonRect.x;
+
+    const mainPanelRect = mainPanel.getBoundingClientRect();
+    const offsetFromMainPanel = inboxCenterX - mainPanelRect.x;
+
+    const popupRect = inboxPopup.getBoundingClientRect();
+    const leftOffset = offsetFromMainPanel - popupRect.width / 2;
+
+    return leftOffset;
+}
+
+menuInbox.addEventListener("click", (e) => {
+    popupToggle = !popupToggle;
+
+    // defer actual work until after all synchronous listeners have run
+    setTimeout(() => {
+      if (popupToggle) {
+        inboxPopup = document.querySelector("#inbox-popup");
+        const popupLocation = getLocationOfPopup();
+        inboxPopup.style.left = `${popupLocation}px`;
+      }
+    }, 0);
+}, false,);
+
 // Main styles changes
 // Fixes for the retarded new songsterr mobile like ui
 const css = `
@@ -7,13 +39,13 @@ const css = `
 .Fdftiq_mainPanel {
   left: 50% !important;
   transform: translateX(-50%) !important;
-  bottom: 20px !important;
+  bottom: 10px !important;
   top: 96px !important;
 }
 
 /* Navigation menu, the parent of tab list centered as well */
 *:has(>#tablist) {
-  top: 20px !important;
+  top: 10px !important;
   bottom: unset !important;
   right: 0 !important;
   left: 50% !important;
@@ -31,7 +63,6 @@ const css = `
     padding: 10px 0;
     height: max-content;
     border-radius: 20px;
-    bottom: 5px;
     right: 15px;
     align-items: flex-end;
     padding: 0 0 5px 0;
@@ -52,10 +83,10 @@ const css = `
 
 /* Prevent dragging and resize the bottom controls panel */
 .idrtTa_controls {
-    max-height: 10000px !important;
+    max-height: unset !important;
     justify-content: space-around;
     border-radius: 20px;
-    padding: 10px;
+    padding: 5px;
 }
 
 /* restyle the video panel */
@@ -74,6 +105,18 @@ const css = `
 /* resize the bottom panel to be max width */
 .idrtTa_controlsCard {
     width: 100%;
+}
+
+/* inbox popup moved to the top */
+#inbox-popup {
+    top: 60px !important;
+    bottom: unset !important;
+    max-height: unset !important;
+}
+
+/* move the banner for revisions down */
+._8e144G_date {
+    top: -6px;
 }
 `;
 
