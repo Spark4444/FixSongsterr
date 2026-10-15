@@ -1,10 +1,9 @@
 const styleId = "fixsongsterrStyles";
 
-const menuInbox = document.querySelector("#menu-inbox");
-let inboxPopup;
 const mainPanel = document.querySelector("#tablist").parentElement;
 
-let popupToggle = false;
+const menuInbox = document.querySelector("#menu-inbox");
+let inboxPopup;
 
 function getLocationOfPopup() {
     const inboxButtonRect = menuInbox.getBoundingClientRect();
@@ -20,15 +19,11 @@ function getLocationOfPopup() {
 }
 
 menuInbox.addEventListener("click", (e) => {
-    popupToggle = !popupToggle;
-
     // defer actual work until after all synchronous listeners have run
     setTimeout(() => {
-      if (popupToggle) {
         inboxPopup = document.querySelector("#inbox-popup");
         const popupLocation = getLocationOfPopup();
         inboxPopup.style.left = `${popupLocation}px`;
-      }
     }, 0);
 }, false,);
 
@@ -117,6 +112,38 @@ const css = `
 /* move the banner for revisions down */
 ._8e144G_date {
     top: -6px;
+}
+
+/* help menu popup moved down */
+#help-menu {
+    bottom: -165px !important;
+}
+
+/* profile popup moved down */
+#profile-popup-desktop {
+    bottom: -101px !important;
+}
+
+/* removed stupid connector line */
+._6_NcWG_container {
+    &:has(._6_NcWG_labelChecked:first-child):before {
+        animation: unset !important;
+        top: unset !important;
+        transform: unset !important;
+    }
+}
+._6_NcWG_container {
+    &:before {
+        content: unset !important;
+        transform-origin: unset !important;
+        background-color: unset !important;
+        width: unset !important;
+        height: unset !important;
+        position:  unset !important;
+        top: unset !important;
+        left:  unset !important;
+        transform:  unset !important;
+    }
 }
 `;
 
