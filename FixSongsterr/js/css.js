@@ -1,38 +1,3 @@
-// Inject custom fixes for the Songsterr desktop layout to fix mobile-like UI
-const styleId = "fixsongsterrStyles";
-
-// The container that holds the main navigation buttons
-const mainPanelContainer = document.querySelector("#tablist").parentElement;
-
-// The inbox button in the top navigation; clicking opens the inbox popup
-const inboxButton = document.querySelector("#menu-inbox");
-let inboxPopupEl;
-
-// Compute horizontal left offset (relative to the main panel) for the inbox popup
-function computeInboxPopupLeft() {
-    const inboxButtonRect = inboxButton.getBoundingClientRect();
-    const inboxCenterX = inboxButtonRect.width / 2 + inboxButtonRect.x;
-
-    const mainPanelRect = mainPanelContainer.getBoundingClientRect();
-    const offsetFromMainPanel = inboxCenterX - mainPanelRect.x;
-
-    const popupRect = inboxPopupEl.getBoundingClientRect();
-    const leftOffset = offsetFromMainPanel - popupRect.width / 2;
-
-    return leftOffset;
-}
-
-// Defer positioning until after the popup is created by other listeners
-inboxButton.addEventListener("click", (e) => {
-    setTimeout(() => {
-        inboxPopupEl = document.querySelector("#inbox-popup");
-        if (inboxPopupEl) {
-            const popupLocation = computeInboxPopupLeft();
-            inboxPopupEl.style.left = `${popupLocation}px`;
-        }
-    }, 0);
-}, false);
-
 // Main style overrides for desktop: center panels, prevent mobile-style dragging, and adjust popups
 const css = `
 /* Center main panel */
@@ -151,10 +116,3 @@ const css = `
     }
 }
 `;
-
-// Inject the styles into the document head
-const styleEl = document.createElement("style");
-styleEl.id = styleId;
-styleEl.type = "text/css";
-styleEl.appendChild(document.createTextNode(css));
-document.head.appendChild(styleEl);
