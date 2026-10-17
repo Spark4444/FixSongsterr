@@ -6,7 +6,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.songsterr.com/*", "*://songsterr.com/*"],
-      "js": ["js/css.js", "js/inject.js", "js/adjustableStyles.js"],
+      "js": ["js/css.js", "js/inject.js", "js/adjustableStyles/bottomPopups.js", "js/adjustableStyles/topPopup.js"],
       "run_at": "document_idle",
       "all_frames": false
     }

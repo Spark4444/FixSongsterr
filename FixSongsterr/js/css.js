@@ -44,6 +44,7 @@ const css = `
 ._5pcfpW_controlsTopPanelRow {
     visibility: visible !important;
     opacity: 1 !important;
+    bottom: calc(var(--controls-top-panel-bottom) - 5px);
 }
 
 /* Prevent bottom controls from collapsing/being draggable */
@@ -95,24 +96,26 @@ const css = `
 }
 
 /* Remove decorative connector line */
-._6_NcWG_container {
-    &:has(._6_NcWG_labelChecked:first-child):before {
-        animation: unset !important;
-        top: unset !important;
-        transform: unset !important;
-    }
+._6_NcWG_container:before {
+    content: unset !important;
 }
-._6_NcWG_container {
-    &:before {
-        content: unset !important;
-        transform-origin: unset !important;
-        background-color: unset !important;
-        width: unset !important;
-        height: unset !important;
-        position:  unset !important;
-        top: unset !important;
-        left:  unset !important;
-        transform:  unset !important;
-    }
+
+.idrtTa_popupsLayer [role="dialog"] {
+    bottom: 70px !important;
+    border-radius: 20px !important;
+    max-height: calc(100vh - 80px) !important;
 }
+
+.idrtTa_popupsLayer [aria-label="Transpose notation"] {
+    width: 360px;
+}
+
+._9HBv-q_logoContainer {
+    z-index: calc(var(--zIndexAdminPanel) - 4);
+}
+
+.DhZNRW_popup{
+    border-radius: 20px !important;
+}
+
 `;
