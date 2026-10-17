@@ -19,6 +19,7 @@ function setupListeners() {
   // Click Event listeners for popups
   popupButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
+      updatePopupMoveUp();
       currentBtn = btn;
     });
   });
@@ -39,9 +40,9 @@ window.addEventListener("popstate", () => {
 
       // Wait for other scripts to finish executing before setting up listeners
       setTimeout(() => {
+        updateControlsBounds();
         selectPopupButtons();
         setupListeners();
-        console.log(popupButtons);
       }, 0);
     }
   }
@@ -52,9 +53,9 @@ window.addEventListener("popstate", () => {
 // Reposition popups on window resize and update controls bounds
 window.addEventListener("resize", () => {
   // Update button bottom positions before computing the popup left
-  updatePopupMoveUp();
 
   updateControlsBounds();
+  
   if (currentBtn) {
     updatePopupPosition();
   }

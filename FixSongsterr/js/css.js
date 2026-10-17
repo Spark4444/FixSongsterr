@@ -123,4 +123,9 @@ const css = `
 #Redesign_BTF_tab_page_320x50, #showroom, #showroom_header_desktop, #promo {
     display: none;
 }
+
+/* Style for the request original popup (seperate from other bottom popups) */
+#request-original-audio-modal {
+    border-radius: 20px !important;
+}
 `;

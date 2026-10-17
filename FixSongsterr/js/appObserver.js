@@ -8,6 +8,12 @@ const appObserver = new MutationObserver(() => {
   if (continueLink) {
     continueLink.querySelector("a").click();
   }
+
+  // Adjust the position of the request original audio modal if it exists, its seperate from all the other bottom popups
+  const requestOriginalAudioModal = document.querySelector("#request-original-audio-modal");
+  if (requestOriginalAudioModal) {
+    requestOriginalAudioModal.style.bottom = `${popupMoveUp}px`;
+  }
 });
 
 appObserver.observe(app, {

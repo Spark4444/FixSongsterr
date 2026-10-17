@@ -1,12 +1,12 @@
 // Main bar with the buttons
-const controlsEl = document.querySelector("#controls");
 let controlsLeft, controlsRight;
 
 // Function to update the max bounds of the controls
 function updateControlsBounds() {
+  const controlsEl = document.querySelector("#controls");
   if (!controlsEl) return;
-
-  let controlsRect = controlsEl.getBoundingClientRect();
+  
+  const controlsRect = controlsEl.getBoundingClientRect();
   controlsLeft = controlsRect.left;
   controlsRight = controlsRect.left + controlsRect.width;
 }
@@ -16,6 +16,7 @@ updateControlsBounds();
 let selectors = [
   "#mixer-button",
   "#c-speed",
+  "c-tuning",
   "#c-transpose",
   "#c-metronome",
   "#c-export",

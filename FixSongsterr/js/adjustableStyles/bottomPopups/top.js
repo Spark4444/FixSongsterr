@@ -18,4 +18,3 @@ function updatePopupMoveUp() {
 
   popupMoveUp = popUpInitialPosition + buttonMoveUp * multiplier;
 }
-updatePopupMoveUp();
