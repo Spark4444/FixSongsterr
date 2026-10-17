@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "sync": "node syncFirefoxVersion.js"
+    "sync": "node js/syncFirefoxVersion.js",
+    "zip": "node js/zip.js",
+    "sync-and-zip": "npm run sync && npm run zip"
   }
 }
