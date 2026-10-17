@@ -1,17 +1,9 @@
-let popupLayerObserver;
-let observedPopupLayerEl;
-
+// Function to set up event listeners for popup buttons and observe popup layer changes
 function setupListeners() {
   const popupLayerEl = document.querySelector(".idrtTa_popupsLayer");
 
-  if (popupLayerObserver && observedPopupLayerEl !== popupLayerEl) {
-    popupLayerObserver.disconnect();
-    popupLayerObserver = null;
-    observedPopupLayerEl = null;
-  }
-
-  if (popupLayerEl && !popupLayerObserver) {
-    popupLayerObserver = new MutationObserver(() => {
+  if (popupLayerEl) {
+    const popupLayerObserver = new MutationObserver(() => {
       if (currentBtn) {
         updatePopupPosition();
       }
@@ -22,76 +14,54 @@ function setupListeners() {
       subtree: true,
       attributes: true,
     });
-    observedPopupLayerEl = popupLayerEl;
   }
 
   // Click Event listeners for popups
   popupButtons.forEach((btn) => {
-    if (btn.dataset.fixsongsterrPopupClickListener === "1") return;
-
-    btn.dataset.fixsongsterrPopupClickListener = "1";
     btn.addEventListener("click", () => {
+      updatePopupMoveUp();
       currentBtn = btn;
     });
   });
 }
-setupListeners();
 
-const urlChangeEventName = "fixsongsterr:urlchange";
-let lastHandledUrl = window.location.href;
-
-function isRevisionRoute(url) {
-  const parsedUrl = new URL(url, window.location.origin);
-  const pathParts = parsedUrl.pathname.split("/").filter(Boolean);
-  const lastPathPart = pathParts[pathParts.length - 1] || "";
-  return /^r/.test(lastPathPart);
-}
-
-function refreshPopupListenersOnUrlChange() {
-  const currentUrl = window.location.href;
-  if (currentUrl === lastHandledUrl) return;
-  lastHandledUrl = currentUrl;
-
-  if (!isRevisionRoute(currentUrl)) return;
-
+// Set everything up initially
+setTimeout(() => {
+  updateControlsBounds();
   selectPopupButtons();
-  if (currentBtn && !popupButtons.includes(currentBtn)) {
-    currentBtn = null;
-  }
   setupListeners();
-}
+}, 0);
 
-function dispatchUrlChangeEvent() {
-  window.dispatchEvent(new Event(urlChangeEventName));
-}
+let previousUrl = window.location.href;
 
-if (!window.fixSongsterrUrlChangeListenerInstalled) {
-  const originalPushState = history.pushState;
-  const originalReplaceState = history.replaceState;
+// listener for URL changes to re-setup popup listeners on revision routes
+window.addEventListener("popstate", () => {
+  const currentUrl = window.location.href;
 
-  history.pushState = function () {
-    const result = originalPushState.apply(this, arguments);
-    dispatchUrlChangeEvent();
-    return result;
-  };
+  // Check if url changed
+  if (currentUrl !== previousUrl) {
+    const splitUrl = currentUrl.split("/").filter(Boolean);
+    // Check if the last part of the URL indicates a revision route, starts with "r"
+    if (splitUrl[splitUrl.length - 1].startsWith("r")) {
 
-  history.replaceState = function () {
-    const result = originalReplaceState.apply(this, arguments);
-    dispatchUrlChangeEvent();
-    return result;
-  };
+      // Wait for other scripts to finish executing before setting up listeners
+      setTimeout(() => {
+        updateControlsBounds();
+        selectPopupButtons();
+        setupListeners();
+      }, 0);
+    }
+  }
 
-  window.addEventListener("popstate", dispatchUrlChangeEvent);
-  window.addEventListener(urlChangeEventName, refreshPopupListenersOnUrlChange);
-  window.fixSongsterrUrlChangeListenerInstalled = true;
-}
+  previousUrl = currentUrl;
+});
 
 // Reposition popups on window resize and update controls bounds
 window.addEventListener("resize", () => {
   // Update button bottom positions before computing the popup left
-  updatePopupMoveUp();
 
   updateControlsBounds();
+
   if (currentBtn) {
     updatePopupPosition();
   }

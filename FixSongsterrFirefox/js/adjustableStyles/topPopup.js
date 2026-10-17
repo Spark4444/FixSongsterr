@@ -29,22 +29,20 @@ function positionInboxPopup() {
     }
   }, 0);
 }
-
 if (inboxBtn) {
-  inboxBtn.addEventListener(
+    inboxBtn.addEventListener(
     "click",
     (e) => {
       positionInboxPopup();
     },
     false,
   );
-
-  // Add resize listener that performs the same repositioning logic as the click listener
-  window.addEventListener(
-    "resize",
-    () => {
-      positionInboxPopup();
-    },
-    false,
-  );
 }
+// Add resize listener that performs the same repositioning logic as the click listener
+window.addEventListener(
+  "resize",
+  () => {
+    positionInboxPopup();
+  },
+  false,
+);

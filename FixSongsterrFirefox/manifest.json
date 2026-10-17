@@ -2,10 +2,13 @@
   "manifest_version": 2,
   "name": "FixSongsterr",
   "description": "Extension that fixes the mobile-like layout on songsterr",
-  "version": "1.4.0",
+  "version": "1.6.0",
   "content_scripts": [
     {
-      "matches": ["*://*.songsterr.com/*", "*://songsterr.com/*"],
+      "matches": [
+        "*://*.songsterr.com/*",
+        "*://songsterr.com/*"
+      ],
       "js": [
         "js/css.js",
         "js/inject.js",
@@ -13,13 +16,16 @@
         "js/adjustableStyles/bottomPopups/top.js",
         "js/adjustableStyles/bottomPopups/left.js",
         "js/adjustableStyles/bottomPopups/listeners.js",
-        "js/adjustableStyles/topPopup.js"
+        "js/adjustableStyles/topPopup.js",
+        "js/appObserver.js"
       ],
       "run_at": "document_idle",
       "all_frames": false
     }
   ],
-  "permissions": ["*://*.songsterr.com/*"],
+  "permissions": [
+    "*://*.songsterr.com/*"
+  ],
   "applications": {
     "gecko": {
       "id": "fixsongsterr@spark4444.github.io"
@@ -30,16 +36,18 @@
       "id": "fixsongsterr@spark4444.github.io",
       "strict_min_version": "109.0",
       "data_collection_permissions": {
-        "required": ["none"]
+        "required": [
+          "none"
+        ]
       }
     }
   },
   "icons": {
-    "128": "img/128.png",
-    "96": "img/96.png",
-    "64": "img/64.png",
-    "48": "img/48.png",
+    "16": "img/16.png",
     "32": "img/32.png",
-    "16": "img/16.png"
+    "48": "img/48.png",
+    "64": "img/64.png",
+    "96": "img/96.png",
+    "128": "img/128.png"
   }
 }

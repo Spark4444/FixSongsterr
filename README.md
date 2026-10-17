@@ -19,3 +19,11 @@ git clone https://github.com/Spark4444/FixSongsterr
 3. Go to the extensions tab in your browser.
 4. Enable developer mode in the top-right corner.
 5. Press the "Load unpacked" button and select the `FixSongsterr` folder from the downloaded files (the one inside the first `FixSongsterr` folder). That's it!
+
+## Sync Chrome JS to Firefox folder
+
+To sync up the version, content scripts and js folders run:
+
+```bash
+npm run sync
+```

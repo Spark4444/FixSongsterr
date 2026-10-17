@@ -30,5 +30,6 @@ function updatePopupPosition() {
         let left = computePopupLeft(currentBtn, popupEl);
         popupEl.style.setProperty("left", `${left}px`, "important");
         popupEl.style.setProperty("bottom", `${popupMoveUp}px`, "important");
+        popupEl.style.setProperty("max-height", `calc(100vh - ${85 + popupMoveUp - popUpInitialPosition}px)`, "important");
     }
 }
