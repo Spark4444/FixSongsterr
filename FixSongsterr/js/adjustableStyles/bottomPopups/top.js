@@ -3,7 +3,6 @@ const popUpInitialPosition = 70;
 let popupMoveUp = popUpInitialPosition;
 
 let currentBtn;
-const debounceTime = 100;
 
 // Button position reference values (px)
 const buttonMoveUp = 59;
