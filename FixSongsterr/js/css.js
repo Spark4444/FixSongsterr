@@ -93,7 +93,7 @@ const css = `
 }
 
 /* Remove decorative connector line */
-._6_NcWG_container:before {
+._6_NcWG_container:before, .idrtTa_sourceWrapper:before {
     content: unset !important;
 }
 

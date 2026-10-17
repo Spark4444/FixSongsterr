@@ -21,9 +21,14 @@ let selectors = [
   "#c-settings",
 ];
 let popupButtons = [];
-selectors.forEach((selector) => {
-  let btn = document.querySelector(selector);
-  if (btn) {
-    popupButtons.push(btn);
-  }
-});
+
+function selectPopupButtons() {
+  popupButtons = [];
+  selectors.forEach((selector) => {
+    let btn = document.querySelector(selector);
+    if (btn) {
+      popupButtons.push(btn);
+    }
+  });
+}
+selectPopupButtons();
