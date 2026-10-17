@@ -1,7 +1,7 @@
 // Main style overrides for desktop: center panels, prevent mobile-style dragging, and adjust popups
 const css = `
 /* Center main panel */
-.Fdftiq_mainPanel {
+#panel-favorites, #panel-search, #panel-account, #panel-help {
   left: 50% !important;
   transform: translateX(-50%) !important;
   bottom: 10px !important;
@@ -121,5 +121,16 @@ const css = `
 /* fix the saml button position of the metronome popup */
 #metronome-settings {
     top: -6px;
+}
+
+/* make the side panel in revisions full size */
+#right-bar {
+    bottom: 10px !important;
+}
+
+/* move the panel up a bit and fix the border-radius */
+#panel-profile {
+    border-radius: 20px;
+    bottom: 10px;
 }
 `;
