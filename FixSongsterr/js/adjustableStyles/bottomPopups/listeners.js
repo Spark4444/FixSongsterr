@@ -24,7 +24,13 @@ function setupListeners() {
     });
   });
 }
-setupListeners();
+
+// Set everything up initially
+setTimeout(() => {
+  updateControlsBounds();
+  selectPopupButtons();
+  setupListeners();
+}, 0);
 
 let previousUrl = window.location.href;
 
@@ -55,7 +61,7 @@ window.addEventListener("resize", () => {
   // Update button bottom positions before computing the popup left
 
   updateControlsBounds();
-  
+
   if (currentBtn) {
     updatePopupPosition();
   }

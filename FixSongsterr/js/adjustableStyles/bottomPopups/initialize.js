@@ -5,12 +5,11 @@ let controlsLeft, controlsRight;
 function updateControlsBounds() {
   const controlsEl = document.querySelector("#controls");
   if (!controlsEl) return;
-  
+
   const controlsRect = controlsEl.getBoundingClientRect();
   controlsLeft = controlsRect.left;
   controlsRight = controlsRect.left + controlsRect.width;
 }
-updateControlsBounds();
 
 // Buttons with popups
 let selectors = [
@@ -35,4 +34,3 @@ function selectPopupButtons() {
     }
   });
 }
-selectPopupButtons();
