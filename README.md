@@ -1,5 +1,6 @@
 # FixSongsterr
 A super lightweight extension that injects styles to fix the mobile-like layout on Songsterr.
+[Chrome Web Store Link](https://chromewebstore.google.com/detail/fixsongsterr/ofdgegoedmopebnchgmgcdkhhjgoaflc)
 
 ## Features
 FixSongsterr injects a small block of CSS into Songsterr to restore a more desktop-friendly layout after recent mobile-like UI changes. The injected styles center the main panel and navigation, prevent the bottom controls from collapsing or being draggable, restyle the video panel, and stretch controls to use the available width.
