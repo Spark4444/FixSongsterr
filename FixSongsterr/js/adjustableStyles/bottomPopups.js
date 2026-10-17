@@ -2,6 +2,7 @@
 const controlsEl = document.querySelector("#controls");
 let controlsLeft, controlsRight;
 
+// Function to update the max bounds of the controls
 function updateControlsBounds() {
     let controlsRect = controlsEl.getBoundingClientRect();
     controlsLeft = controlsRect.left;
@@ -10,7 +11,15 @@ function updateControlsBounds() {
 updateControlsBounds();
 
 // Buttons with popups
-let selectors = ["#c-settings", "#c-export", "#c-transpose", "#c-speed", "#mixer-button", "#c-print", "#c-metronome"];
+let selectors = [
+  "#mixer-button",
+  "#c-speed",
+  "#c-transpose",
+  "#c-metronome",
+  "#c-export",
+  "#c-print",
+  "#c-settings",
+];
 let popupButtons = [];
 selectors.forEach(selector => {
     let btn = document.querySelector(selector);
@@ -19,18 +28,37 @@ selectors.forEach(selector => {
     }
 });
 
+// Move the buttons up
+const popUpInitialPosition = 70;
+let moveUpBtns = popUpInitialPosition;
+
 let currentBtn;
-let debounceTime = 100;
+const debounceTime = 100;
+
+const btnMoveup = 59;
+const btnInitialPosition = 54;
+
+// Automatically check if the first button changed positions because of flex wrap, and the control element itself added by "btnMoveup"
+function updateButtonsMoveUp() {
+  // Check if the bottom buttons resize and became bigger by position
+  let currentHeight = window.innerHeight - popupButtons[0].getBoundingClientRect().y;
+
+  let multiplier = (currentHeight - btnInitialPosition) / btnMoveup;
+
+  moveUpBtns = popUpInitialPosition + (btnMoveup * multiplier);
+}
+updateButtonsMoveUp();
+
 
 // Compute the left position of the popup
 function computePopupLeft(triggerEl, popupEl) {
     // Get button's center of the width
-    let btnRect = triggerEl.getBoundingClientRect();
-    let btnCenter = btnRect.left + btnRect.width / 2;
+    const btnRect = triggerEl.getBoundingClientRect();
+    const btnCenter = btnRect.left + btnRect.width / 2;
 
     // Get popup's center as well
-    let popupRect = popupEl.getBoundingClientRect();
-    let popupHalf = popupRect.width / 2;
+    const popupRect = popupEl.getBoundingClientRect();
+    const popupHalf = popupRect.width / 2;
 
     // Center the popup horizontally
     let leftPos = btnCenter - popupHalf;
@@ -47,15 +75,17 @@ function computePopupLeft(triggerEl, popupEl) {
     return leftPos;
 }
 
+// Function to update the position of the popup
 function updatePopupPosition() {
     let popupEl = document.querySelector(".idrtTa_popupsLayer [role='dialog'], #metronome-popup");
     if (popupEl) {
         let left = computePopupLeft(currentBtn, popupEl);
-        popupEl.style.left = `${left}px`;
+        popupEl.style.setProperty("left", `${left}px`, "important");
+        popupEl.style.setProperty("bottom", `${moveUpBtns}px`, "important");
     }
 }
 
-// Event listeners for popups
+// Click Event listeners for popups
 popupButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         setTimeout(() => {
@@ -68,6 +98,9 @@ popupButtons.forEach(btn => {
 
 // Reposition popups on window resize and update controls bounds
 window.addEventListener("resize", () => {
+    // Update button bottom positions before computing the popup left
+    updateButtonsMoveUp();
+
     updateControlsBounds();
     if (currentBtn) {
         setTimeout(() => {

@@ -1,1 +1,0 @@
-2. check if the bottom bar got bigger and move popups up
