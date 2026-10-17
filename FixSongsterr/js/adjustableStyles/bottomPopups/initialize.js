@@ -4,6 +4,8 @@ let controlsLeft, controlsRight;
 
 // Function to update the max bounds of the controls
 function updateControlsBounds() {
+  if (!controlsEl) return;
+
   let controlsRect = controlsEl.getBoundingClientRect();
   controlsLeft = controlsRect.left;
   controlsRight = controlsRect.left + controlsRect.width;

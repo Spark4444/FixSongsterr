@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "FixSongsterr",
   "description": "Extension that fixes the mobile-like layout on songsterr",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "content_scripts": [
     {
       "matches": ["*://*.songsterr.com/*", "*://songsterr.com/*"],
@@ -13,7 +13,8 @@
         "js/adjustableStyles/bottomPopups/top.js",
         "js/adjustableStyles/bottomPopups/left.js",
         "js/adjustableStyles/bottomPopups/listeners.js",
-        "js/adjustableStyles/topPopup.js"
+        "js/adjustableStyles/topPopup.js",
+        "js/removeAds.js"
       ],
       "run_at": "document_idle",
       "all_frames": false

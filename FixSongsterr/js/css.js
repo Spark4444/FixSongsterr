@@ -1,7 +1,7 @@
 // Main style overrides for desktop: center panels, prevent mobile-style dragging, and adjust popups
 const css = `
 /* Center main panel */
-#panel-favorites, #panel-search, #panel-account, #panel-help {
+#panel-favorites, #panel-search, #panel-account, #panel-help, #panel-newtab {
   left: 50% !important;
   transform: translateX(-50%) !important;
   bottom: 10px !important;
@@ -52,15 +52,17 @@ const css = `
     max-height: unset !important;
     justify-content: space-around;
     border-radius: 20px;
-    padding: 5px;
+    padding: 10px 5px;
+    box-shadow: var(--popup-shadow);
 }
 
 /* Restyle the video panel */
 .oCvYpa_panel {
     border-radius: 20px;
     padding: 15px;
-    background: #252529;
+    background: var(--controls-surface);
     margin: 0 0 10px 0;
+    box-shadow: var(--popup-shadow);
 }
 
 /* Ensure parent of video panel is centered */
@@ -80,11 +82,6 @@ const css = `
     max-height: unset !important;
 }
 
-/* Move revisions banner slightly down */
-._8e144G_date {
-    top: -6px;
-}
-
 /* Adjust help menu popup vertical position */
 #help-menu {
     bottom: -165px !important;
@@ -102,9 +99,7 @@ const css = `
 
 /* all the bottom popups move up and adjusted width */
 .idrtTa_popupsLayer [role="dialog"], #metronome-popup {
-    bottom: 70px !important;
     border-radius: 20px !important;
-    max-height: calc(100vh - 80px) !important;
     width: 360px !important;
 }
 
@@ -118,19 +113,14 @@ const css = `
     border-radius: 20px !important;
 }
 
-/* fix the saml button position of the metronome popup */
-#metronome-settings {
-    top: -6px;
-}
-
-/* make the side panel in revisions full size */
-#right-bar {
-    bottom: 10px !important;
-}
-
 /* move the panel up a bit and fix the border-radius */
 #panel-profile {
     border-radius: 20px;
     bottom: 10px;
+}
+
+/* hide the ads */
+#Redesign_BTF_tab_page_320x50, #showroom, #showroom_header_desktop, #promo {
+    display: none;
 }
 `;

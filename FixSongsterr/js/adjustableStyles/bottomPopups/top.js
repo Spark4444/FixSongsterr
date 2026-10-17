@@ -1,5 +1,5 @@
 // Move the buttons up
-const popUpInitialPosition = 70;
+const popUpInitialPosition = 75;
 let popupMoveUp = popUpInitialPosition;
 
 let currentBtn;
@@ -10,6 +10,7 @@ const buttonInitialPosition = 54;
 
 // Automatically adjust popup vertical offset when bottom buttons change height
 function updatePopupMoveUp() {
+  if (!popupButtons || popupButtons.length === 0) return;
   // Compute how much the button row has grown from its initial position
   const currentHeight =
     window.innerHeight - popupButtons[0].getBoundingClientRect().y;

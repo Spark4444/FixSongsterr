@@ -1,24 +1,23 @@
 const popupLayerEl = document.querySelector(".idrtTa_popupsLayer");
 
-const popupLayerObserver = new MutationObserver(() => {
-  if (currentBtn) {
-    updatePopupPosition();
-  }
-});
+if (popupLayerEl) {
+  const popupLayerObserver = new MutationObserver(() => {
+    if (currentBtn) {
+      updatePopupPosition();
+    }
+  });
 
-popupLayerObserver.observe(popupLayerEl, {
-  childList: true,
-  subtree: true,
-  attributes: true,
-});
+  popupLayerObserver.observe(popupLayerEl, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+  });
+}
 
 // Click Event listeners for popups
 popupButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    setTimeout(() => {
-      currentBtn = btn;
-      updatePopupPosition();
-    }, 0);
+    currentBtn = btn;
   });
 });
 
@@ -29,8 +28,6 @@ window.addEventListener("resize", () => {
 
   updateControlsBounds();
   if (currentBtn) {
-    setTimeout(() => {
-      updatePopupPosition();
-    }, 0);
+    updatePopupPosition();
   }
 });
