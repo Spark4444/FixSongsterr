@@ -1,0 +1,1 @@
+1. Add metronome popup, add print pop up

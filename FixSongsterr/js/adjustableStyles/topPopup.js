@@ -1,20 +1,20 @@
 // The container that holds the main navigation buttons
-const mainPanelContainer = document.querySelector("#tablist").parentElement;
+const mainPanelEl = document.querySelector("#tablist").parentElement;
 
 // The inbox button in the top navigation; clicking opens the inbox popup
-const inboxButton = document.querySelector("#menu-inbox");
+const inboxBtn = document.querySelector("#menu-inbox");
 let inboxPopupEl;
 
 // Compute horizontal left offset (relative to the main panel) for the inbox popup
 function computeInboxPopupLeft() {
-  const inboxButtonRect = inboxButton.getBoundingClientRect();
-  const inboxCenterX = inboxButtonRect.width / 2 + inboxButtonRect.x;
+  const btnRect = inboxBtn.getBoundingClientRect();
+  const btnCenterX = btnRect.width / 2 + btnRect.x;
 
-  const mainPanelRect = mainPanelContainer.getBoundingClientRect();
-  const offsetFromMainPanel = inboxCenterX - mainPanelRect.x;
+  const mainRect = mainPanelEl.getBoundingClientRect();
+  const offsetFromMain = btnCenterX - mainRect.x;
 
   const popupRect = inboxPopupEl.getBoundingClientRect();
-  const leftOffset = offsetFromMainPanel - popupRect.width / 2;
+  const leftOffset = offsetFromMain - popupRect.width / 2;
 
   return leftOffset;
 }
@@ -24,13 +24,13 @@ function positionInboxPopup() {
   setTimeout(() => {
     inboxPopupEl = document.querySelector("#inbox-popup");
     if (inboxPopupEl) {
-      const popupLocation = computeInboxPopupLeft();
-      inboxPopupEl.style.left = `${popupLocation}px`;
+      const popupLeft = computeInboxPopupLeft();
+      inboxPopupEl.style.left = `${popupLeft}px`;
     }
   }, 0);
 }
 
-inboxButton.addEventListener(
+inboxBtn.addEventListener(
   "click",
   (e) => {
     positionInboxPopup();

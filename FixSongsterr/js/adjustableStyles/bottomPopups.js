@@ -1,44 +1,75 @@
-let controls = document.querySelector("#controls");
-let controlsBounding = controls.getBoundingClientRect();
-let controlsMostLeft = controlsBounding.left;
-let controlsMostRight = controlsBounding.left + controlsBounding.width;
+// Main bar with the buttons
+const controlsEl = document.querySelector("#controls");
+let controlsLeft, controlsRight;
 
+function updateControlsBounds() {
+    let controlsRect = controlsEl.getBoundingClientRect();
+    controlsLeft = controlsRect.left;
+    controlsRight = controlsRect.left + controlsRect.width;
+}
+updateControlsBounds();
 
-let settingsButton = document.querySelector("#c-settings");
-let exportButton = document.querySelector("#c-export");
-let transposeButton = document.querySelector("#c-transpose");
-let speedButton = document.querySelector("#c-speed");
-let mixerButton = document.querySelector("#mixer-button");
-let buttonsWithPopups = [settingsButton, exportButton, transposeButton, speedButton, mixerButton];
+// Buttons with popups
+const settingsBtn = document.querySelector("#c-settings");
+const exportBtn = document.querySelector("#c-export");
+const transposeBtn = document.querySelector("#c-transpose");
+const speedBtn = document.querySelector("#c-speed");
+const mixerBtn = document.querySelector("#mixer-button");
+const popupButtons = [settingsBtn, exportBtn, transposeBtn, speedBtn, mixerBtn];
 
-function adjustBottomPopup(originalButton, generatedPopup) {
-    let originalButtonBounding = originalButton.getBoundingClientRect();
-    let originalButtonCenter = originalButtonBounding.left + originalButtonBounding.width / 2;
+let currentBtn;
+let debounceTime = 100;
 
-    let generatedPopupBounding = generatedPopup.getBoundingClientRect();
-    let generatedPopupCenter = generatedPopupBounding.width / 2;
+// Compute the left position of the popup
+function computePopupLeft(triggerEl, popupEl) {
+    // Get button's center of the width
+    let btnRect = triggerEl.getBoundingClientRect();
+    let btnCenter = btnRect.left + btnRect.width / 2;
 
-    let left = originalButtonCenter - generatedPopupCenter;
+    // Get popup's center as well
+    let popupRect = popupEl.getBoundingClientRect();
+    let popupHalf = popupRect.width / 2;
 
-    if (left < controlsMostLeft) {
-        left = controlsMostLeft;
+    // Center the popup horizontally
+    let leftPos = btnCenter - popupHalf;
+
+    if (leftPos < controlsLeft) {
+        leftPos = controlsLeft;
     } 
 
-    let popupMostRightPoint = left + generatedPopupBounding.width;
-    if (popupMostRightPoint > controlsMostRight) {
-        left = controlsMostRight - generatedPopupBounding.width;
+    let popupRight = leftPos + popupRect.width;
+    if (popupRight > controlsRight) {
+        leftPos = controlsRight - popupRect.width;
     }
 
-    return left;
+    return leftPos;
 }
 
-buttonsWithPopups.forEach(button => {
-    button.addEventListener("click", () => {
+function updatePopupPosition() {
+    let popupEl = document.querySelector(".idrtTa_popupsLayer [role='dialog']");
+    if (popupEl) {
+        let left = computePopupLeft(currentBtn, popupEl);
+        popupEl.style.left = `${left}px`;
+    }
+}
+
+// Event listeners for popups
+popupButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
         setTimeout(() => {
-            let generatedPopup = document.querySelector(".idrtTa_popupsLayer [role='dialog']");
-            console.log(generatedPopup);
-            let left = adjustBottomPopup(button, generatedPopup);
-            generatedPopup.style.left = `${left}px`;
-        }, 10);
+            currentBtn = btn;
+
+            updatePopupPosition();
+        }, debounceTime);
     });
+});
+
+// Reposition popups on window resize and update controls bounds
+window.addEventListener("resize", () => {
+    updateControlsBounds();
+    if (currentBtn) {
+        setTimeout(() => {
+            updatePopupPosition();
+        }, debounceTime);
+    }
 });

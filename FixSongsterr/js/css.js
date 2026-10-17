@@ -1,7 +1,7 @@
 // Main style overrides for desktop: center panels, prevent mobile-style dragging, and adjust popups
 const css = `
 /* Center main panel */
-#panel-favorites {
+.Fdftiq_mainPanel {
   left: 50% !important;
   transform: translateX(-50%) !important;
   bottom: 10px !important;
