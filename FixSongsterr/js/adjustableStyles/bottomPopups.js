@@ -10,12 +10,14 @@ function updateControlsBounds() {
 updateControlsBounds();
 
 // Buttons with popups
-const settingsBtn = document.querySelector("#c-settings");
-const exportBtn = document.querySelector("#c-export");
-const transposeBtn = document.querySelector("#c-transpose");
-const speedBtn = document.querySelector("#c-speed");
-const mixerBtn = document.querySelector("#mixer-button");
-const popupButtons = [settingsBtn, exportBtn, transposeBtn, speedBtn, mixerBtn];
+let selectors = ["#c-settings", "#c-export", "#c-transpose", "#c-speed", "#mixer-button", "#c-print", "#c-metronome"];
+let popupButtons = [];
+selectors.forEach(selector => {
+    let btn = document.querySelector(selector);
+    if (btn) {
+        popupButtons.push(btn);
+    }
+});
 
 let currentBtn;
 let debounceTime = 100;
@@ -46,7 +48,7 @@ function computePopupLeft(triggerEl, popupEl) {
 }
 
 function updatePopupPosition() {
-    let popupEl = document.querySelector(".idrtTa_popupsLayer [role='dialog']");
+    let popupEl = document.querySelector(".idrtTa_popupsLayer [role='dialog'], #metronome-popup");
     if (popupEl) {
         let left = computePopupLeft(currentBtn, popupEl);
         popupEl.style.left = `${left}px`;

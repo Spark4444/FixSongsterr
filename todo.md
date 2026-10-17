@@ -1,1 +1,1 @@
-1. Add metronome popup, add print pop up
+2. check if the bottom bar got bigger and move popups up

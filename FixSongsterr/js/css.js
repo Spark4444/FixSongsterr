@@ -100,22 +100,26 @@ const css = `
     content: unset !important;
 }
 
-.idrtTa_popupsLayer [role="dialog"] {
+/* all the bottom popups move up and adjusted width */
+.idrtTa_popupsLayer [role="dialog"], #metronome-popup {
     bottom: 70px !important;
     border-radius: 20px !important;
     max-height: calc(100vh - 80px) !important;
+    width: 360px !important;
 }
 
-.idrtTa_popupsLayer [aria-label="Transpose notation"] {
-    width: 360px;
-}
-
+/* hide the songsterr logo to not obstruct instruments popup */
 ._9HBv-q_logoContainer {
     z-index: calc(var(--zIndexAdminPanel) - 4);
 }
 
+/* fix the bottom border radius of the speed popup */
 .DhZNRW_popup{
     border-radius: 20px !important;
 }
 
+/* fix the saml button position of the metronome popup */
+#metronome-settings {
+    top: -6px;
+}
 `;
