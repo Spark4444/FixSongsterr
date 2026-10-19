@@ -59,10 +59,10 @@ window.addEventListener("popstate", () => {
 // Reposition popups on window resize and update controls bounds
 window.addEventListener("resize", () => {
   // Update button bottom positions before computing the popup left
-
   updateControlsBounds();
 
   if (currentBtn) {
     updatePopupPosition();
+    updatePopupMoveUp();
   }
 });
