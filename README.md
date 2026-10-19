@@ -3,7 +3,14 @@ A super lightweight extension that injects styles to fix the mobile-like layout 
 [Chrome Web Store Link](https://chromewebstore.google.com/detail/fixsongsterr/ofdgegoedmopebnchgmgcdkhhjgoaflc)
 
 ## Features
-FixSongsterr injects a small block of CSS into Songsterr to restore a more desktop-friendly layout after recent mobile-like UI changes. The injected styles center the main panel and navigation, prevent the bottom controls from collapsing or being draggable, restyle the video panel, and stretch controls to use the available width.
+FixSongsterr injects CSS and JavaScript utilities into Songsterr to restore a more desktop-friendly layout and improve user experience.
+
+## Ad Blocking
+
+This feature wasn't intended to be actaully implemented into this extension, but i added it just to troll the Songsterr team. 
+Of course i have a premium on songsterr and i basically pay them money to not see ads, perhaps you will find it useful.
+
+The ad blocking itself is quite basic, i block some basic ads with electors and automatically click the continue when it appears when playing the tab with original video.
 
 ## Installation
 
