@@ -3,7 +3,7 @@ A super lightweight extension that injects styles to fix the mobile-like layout 
 [Chrome Web Store Link](https://chromewebstore.google.com/detail/fixsongsterr/ofdgegoedmopebnchgmgcdkhhjgoaflc)
 
 ## Features
-FixSongsterr injects CSS and JavaScript utilities into Songsterr to restore a more desktop-friendly layout and improve user experience.
+FixSongsterr injects CSS and JavaScript utilities into Songsterr to restore a more desktop-friendly layout.
 
 ## Ad Blocking
 
@@ -32,5 +32,17 @@ git clone https://github.com/Spark4444/FixSongsterr
 To sync up the version, content scripts and js folders run:
 
 ```bash
-npm run sync
+npm run
+```
+
+to zip both folder in correct format:
+
+```bash
+npm run zip
+```
+
+to do both at the same time:
+
+```bash
+npm run sync-and-zip
 ```
