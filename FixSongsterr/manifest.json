@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "FixSongsterr",
   "description": "FixSongsterr injects CSS and JavaScript utilities into Songsterr to restore a more desktop-friendly layout.",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "content_scripts": [
     {
       "matches": ["*://*.songsterr.com/*", "*://songsterr.com/*"],

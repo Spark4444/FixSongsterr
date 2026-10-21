@@ -14,6 +14,11 @@ const appObserver = new MutationObserver(() => {
   if (requestOriginalAudioModal) {
     requestOriginalAudioModal.style.bottom = `${popupMoveUp}px`;
   }
+
+  const reportAProblem = document.querySelector("[aria-label='Report a problem']");
+  if (reportAProblem) {
+    reportAProblem.style.bottom = `${popupMoveUp}px`;
+  }
 });
 
 appObserver.observe(app, {

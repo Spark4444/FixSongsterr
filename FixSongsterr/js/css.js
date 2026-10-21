@@ -128,4 +128,9 @@ const css = `
 #request-original-audio-modal {
     border-radius: 20px !important;
 }
+
+/* report the original video popup (seperate from other bottom popups) */
+[aria-label="Report a problem"] {
+    border-radius: 20px !important;
+}
 `;
