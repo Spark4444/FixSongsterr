@@ -5,6 +5,7 @@
   "scripts": {
     "sync": "node js/syncFirefoxVersion.js",
     "zip": "node js/zip.js",
-    "sync-and-zip": "npm run sync && npm run zip"
+    "sync-and-zip": "npm run sync && npm run zip",
+    "add-styles": "node js/addStyles.js"
   }
 }

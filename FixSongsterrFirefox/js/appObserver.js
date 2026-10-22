@@ -10,9 +10,16 @@ const appObserver = new MutationObserver(() => {
   }
 
   // Adjust the position of the request original audio modal if it exists, its seperate from all the other bottom popups
-  const requestOriginalAudioModal = document.querySelector("#request-original-audio-modal");
-  if (requestOriginalAudioModal) {
-    requestOriginalAudioModal.style.bottom = `${popupMoveUp}px`;
+  const bottomSeperateSelectors = [
+    "#request-original-audio-modal",
+    "[aria-label='Report a problem']"
+  ];
+
+  const elements = document.querySelectorAll(bottomSeperateSelectors.join(","));
+  if (elements.length > 0) {
+    elements.forEach((element) => {
+      element.style.bottom = `${popupMoveUp}px`;
+    });
   }
 });
 

@@ -1,0 +1,99 @@
+._5pcfpW_controlsTopPanelRow {
+    bottom: calc(var(--controls-top-panel-bottom) - 5px);
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+._6_NcWG_container:before, .idrtTa_sourceWrapper:before {
+    content: unset !important;
+}
+
+._9HBv-q_logoContainer {
+    z-index: calc(var(--zIndexAdminPanel) - 4);
+}
+
+#controls {
+    align-items: flex-end;
+    background: none;
+    box-shadow: none;
+    height: max-content;
+    padding: 0 0 5px 0;
+    right: 15px;
+    width: 97.5vw;
+}
+
+#controls, .idrtTa_controls, .oCvYpa_panel, .idrtTa_popupsLayer [role="dialog"], #metronome-popup, .DhZNRW_popup, #panel-profile, #request-original-audio-modal, [aria-label="Report a problem"] {
+    border-radius: 20px !important;
+}
+
+#controls-panel-handle {
+    display: none;
+}
+
+*:has(>.oCvYpa_panel) {
+    width: var(--controls-panel-width);
+}
+
+*:has(>#tablist) {
+    bottom: unset !important;
+    right: 0 !important;
+    top: 10px !important;
+}
+
+#header {
+    margin: 60px 0 0 0;
+}
+
+#help-menu {
+    bottom: -165px !important;
+}
+
+.idrtTa_controls {
+    box-shadow: var(--popup-shadow);
+    justify-content: space-around;
+    max-height: unset !important;
+    padding: 10px 5px;
+}
+
+.idrtTa_controlsCard {
+    width: 100%;
+}
+
+.idrtTa_popupsLayer [role="dialog"], #metronome-popup {
+    width: 360px !important;
+}
+
+#inbox-popup {
+    bottom: unset !important;
+    max-height: unset !important;
+    top: 60px !important;
+}
+
+.oCvYpa_panel {
+    background: var(--controls-surface);
+    box-shadow: var(--popup-shadow);
+    margin: 0 0 10px 0;
+    padding: 15px;
+}
+
+#panel-favorites, #panel-search, #panel-account, #panel-help, #panel-newtab {
+    bottom: 10px !important;
+    top: 96px !important;
+}
+
+#panel-favorites, #panel-search, #panel-account, #panel-help, #panel-newtab, *:has(>#tablist) {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+#panel-profile {
+    bottom: 10px;
+}
+
+#profile-popup-desktop {
+    bottom: -101px !important;
+}
+
+#Redesign_BTF_tab_page_320x50, #showroom, #showroom_header_desktop, #promo {
+    display: none;
+}

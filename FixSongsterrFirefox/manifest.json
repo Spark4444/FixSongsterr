@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "FixSongsterr",
   "description": "Extension that fixes the mobile-like layout on songsterr",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "content_scripts": [
     {
       "matches": [
