@@ -3,9 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "sync": "node js/syncFirefoxVersion.js",
-    "zip": "node js/zip.js",
+    "sync": "node src/js/syncFirefoxVersion.js",
+    "zip": "node src/js/zip.js",
     "sync-and-zip": "npm run sync && npm run zip",
-    "add-styles": "node js/addStyles.js"
+    "add-styles": "node src/js/addStyles.js"
+  },
+  "dependencies": {
+    "archiver": "^7.0.0"
   }
 }

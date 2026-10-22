@@ -1,1 +1,5 @@
+# ignore all zip files (for extension packaging)
 *.zip
+
+# ignore all node_modules directories
+node_modules/

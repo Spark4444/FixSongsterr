@@ -2,10 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 
 // Folders and read the CSS file
-const __dirname = path.dirname(import.meta.url.replace("file://", ""));
-
-const styles = path.resolve(__dirname, "style.min.prettified.css");
-const cssJs = path.resolve(__dirname, "../", "FixSongsterr", "js", "css.js");
+const rootDir = path.resolve(".");
+const styles = path.join(rootDir, "src", "css", "style.min.prettified.css");
+const cssJs = path.join(rootDir, "FixSongsterr", "js", "css.js");
 
 const cssContent = fs.readFileSync(styles, "utf8");
 
