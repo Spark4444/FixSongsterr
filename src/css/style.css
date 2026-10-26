@@ -1,133 +1,100 @@
-/* Center main panel */
-#panel-favorites, #panel-search, #panel-account, #panel-help, #panel-newtab {
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  bottom: 10px !important;
-  top: 96px !important;
+._5pcfpW_controlsTopPanelRow {
+    bottom: calc(var(--controls-top-panel-bottom) - 5px) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
-/* Center the navigation menu (parent of #tablist) */
-*:has(>#tablist) {
-  top: 10px !important;
-  bottom: unset !important;
-  right: 0 !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
+._6_NcWG_container:before, .idrtTa_sourceWrapper:before {
+    content: unset !important;
 }
 
-/* Hide draggable controls handle on desktop */
+._9HBv-q_logoContainer {
+    z-index: calc(var(--zIndexAdminPanel) - 4) !important;
+}
+
+#controls {
+    align-items: flex-end !important;
+    background: none !important;
+    box-shadow: none !important;
+    height: max-content !important;
+    padding: 0 0 5px 0 !important;
+    right: 15px !important;
+    width: 97.5vw !important;
+}
+
+#controls, .idrtTa_controls, .oCvYpa_panel, .idrtTa_popupsLayer [role="dialog"], #metronome-popup, .DhZNRW_popup, #panel-profile, #request-original-audio-modal, [aria-label="Report a problem"] {
+    border-radius: 20px !important;
+}
+
 #controls-panel-handle {
     display: none !important;
 }
 
-/* Stretch controls panel to full width and remove mobile shadows */
-#controls {
-    width: 97.5vw !important;
-    padding: 10px 0 !important;
-    height: max-content !important;
-    border-radius: 20px !important;
-    right: 15px !important;
-    align-items: flex-end !important;
-    padding: 0 0 5px 0 !important;
-    background: none !important;
-    box-shadow: none !important;
+*:has(>.oCvYpa_panel) {
+    width: var(--controls-panel-width) !important;
 }
 
-/* Push main header down to make room for top navigation */
+*:has(>#tablist) {
+    bottom: unset !important;
+    right: unset;
+    width: var(--panel-width);
+    top: 10px !important;
+}
+
 #header {
     margin: 60px 0 0 0 !important;
 }
 
-/* Keep controls visible on scroll */
-._5pcfpW_controlsTopPanelRow {
-    visibility: visible !important;
-    opacity: 1 !important;
-    bottom: calc(var(--controls-top-panel-bottom) - 5px) !important;
+#help-menu {
+    bottom: -165px !important;
 }
 
-/* Prevent bottom controls from collapsing/being draggable */
 .idrtTa_controls {
-    border-radius: 20px !important;
     box-shadow: var(--popup-shadow) !important;
     justify-content: space-around !important;
     max-height: unset !important;
     padding: 10px 5px !important;
 }
 
-/* Restyle the video panel */
-.oCvYpa_panel {
-    border-radius: 20px !important;
-    padding: 15px !important;
-    background: var(--controls-surface) !important;
-    margin: 0 0 10px 0 !important;
-    box-shadow: var(--popup-shadow) !important;
-}
-
-/* Ensure parent of video panel is centered */
-*:has(>.oCvYpa_panel) {
-    width: var(--controls-panel-width) !important;
-}
-
-/* Make controls card full width */
 .idrtTa_controlsCard {
     width: 100% !important;
 }
 
-/* Move inbox popup to top area */
+.idrtTa_popupsLayer [role="dialog"], #metronome-popup {
+    width: 360px !important;
+}
+
 #inbox-popup {
-    top: 60px !important;
     bottom: unset !important;
     max-height: unset !important;
+    top: 60px !important;
 }
 
-/* Adjust help menu popup vertical position */
-#help-menu {
-    bottom: -165px !important;
+.oCvYpa_panel {
+    background: var(--controls-surface) !important;
+    box-shadow: var(--popup-shadow) !important;
+    margin: 0 0 10px 0 !important;
+    padding: 15px !important;
 }
 
-/* Adjust profile popup vertical position */
+#panel-favorites, #panel-search, #panel-account, #panel-help, #panel-newtab {
+    bottom: 10px !important;
+    top: 96px !important;
+}
+
+#panel-favorites, #panel-search, #panel-account, #panel-help, #panel-newtab, *:has(>#tablist) {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+#panel-profile {
+    bottom: 10px !important;
+}
+
 #profile-popup-desktop {
     bottom: -101px !important;
 }
 
-/* Remove decorative connector line */
-._6_NcWG_container:before, .idrtTa_sourceWrapper:before {
-    content: unset !important;
-}
-
-/* all the bottom popups move up and adjusted width */
-.idrtTa_popupsLayer [role="dialog"], #metronome-popup {
-    border-radius: 20px !important;
-    width: 360px !important;
-}
-
-/* hide the songsterr logo to not obstruct instruments popup */
-._9HBv-q_logoContainer {
-    z-index: calc(var(--zIndexAdminPanel) - 4) !important;
-}
-
-/* fix the bottom border radius of the speed popup */
-.DhZNRW_popup{
-    border-radius: 20px !important;
-}
-
-/* move the panel up a bit and fix the border-radius */
-#panel-profile {
-    border-radius: 20px !important;
-    bottom: 10px !important;
-}
-
-/* hide the ads */
 #Redesign_BTF_tab_page_320x50, #showroom, #showroom_header_desktop, #promo {
     display: none !important;
-}
-
-/* Style for the request original popup (seperate from other bottom popups) */
-#request-original-audio-modal {
-    border-radius: 20px !important;
-}
-
-/* report the original video popup (seperate from other bottom popups) */
-[aria-label="Report a problem"] {
-    border-radius: 20px !important;
 }

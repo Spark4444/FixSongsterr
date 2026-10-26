@@ -38,8 +38,9 @@ const css = `
 
 *:has(>#tablist) {
     bottom: unset !important;
-    right: 0 !important;
+    right: unset;
     top: 10px !important;
+    width: var(--panel-width);
 }
 
 #header {
@@ -99,4 +100,5 @@ const css = `
 #Redesign_BTF_tab_page_320x50, #showroom, #showroom_header_desktop, #promo {
     display: none !important;
 }
+
 `;
