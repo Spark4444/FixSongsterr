@@ -5,8 +5,7 @@
   "scripts": {
     "sync": "node src/js/syncFirefoxVersion.js",
     "zip": "node src/js/zip.js",
-    "sync-and-zip": "npm run sync && npm run zip",
-    "add-styles": "node src/js/addStyles.js"
+    "sync-and-zip": "npm run sync && npm run zip"
   },
   "dependencies": {
     "archiver": "^7.0.0"

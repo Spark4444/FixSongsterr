@@ -22,9 +22,14 @@ const css = `
     padding: 0 0 5px 0 !important;
     right: 15px !important;
     width: 97.5vw !important;
+    pointer-events: none !important;
 }
 
-#controls, .idrtTa_controls, .oCvYpa_panel, .idrtTa_popupsLayer [role="dialog"], #metronome-popup, .DhZNRW_popup, #panel-profile, #request-original-audio-modal, [aria-label="Report a problem"] {
+#controls > * {
+    pointer-events: auto !important;
+}
+
+.idrtTa_controls, .oCvYpa_panel, .idrtTa_popupsLayer [role="dialog"], #metronome-popup, .DhZNRW_popup, #panel-profile, #request-original-audio-modal, [aria-label="Report a problem"] {
     border-radius: 20px !important;
 }
 
