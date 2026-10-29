@@ -20,17 +20,13 @@ const css = `
     box-shadow: none !important;
     height: max-content !important;
     padding: 0 0 5px 0 !important;
+    pointer-events: none !important;
     right: 15px !important;
     width: 97.5vw !important;
-    pointer-events: none !important;
 }
 
 #controls > * {
     pointer-events: auto !important;
-}
-
-.idrtTa_controls, .oCvYpa_panel, .idrtTa_popupsLayer [role="dialog"], #metronome-popup, .DhZNRW_popup, #panel-profile, #request-original-audio-modal, [aria-label="Report a problem"] {
-    border-radius: 20px !important;
 }
 
 #controls-panel-handle {
@@ -43,9 +39,9 @@ const css = `
 
 *:has(>#tablist) {
     bottom: unset !important;
-    right: unset;
+    right: unset !important;
     top: 10px !important;
-    width: var(--panel-width);
+    width: var(--panel-width) !important;
 }
 
 #header {
@@ -53,9 +49,12 @@ const css = `
 }
 
 #help-menu {
-    bottom: -165px !important;
-    transform: rotate(180deg);
     border-radius: 20px !important;
+    bottom: -165px !important;
+}
+
+#help-menu, .lokr4q_contentCard, .lokr4q_defaultOutput {
+    transform: rotate(180deg) !important;
 }
 
 .idrtTa_controls {
@@ -69,6 +68,10 @@ const css = `
     width: 100% !important;
 }
 
+.idrtTa_controls, .oCvYpa_panel, .idrtTa_popupsLayer [role="dialog"], #metronome-popup, .DhZNRW_popup, #panel-profile, #request-original-audio-modal, [aria-label="Report a problem"] {
+    border-radius: 20px !important;
+}
+
 .idrtTa_popupsLayer [role="dialog"], #metronome-popup {
     width: 360px !important;
 }
@@ -76,6 +79,32 @@ const css = `
 #inbox-popup {
     bottom: unset !important;
     top: 60px !important;
+}
+
+.lokr4q_contentCard {
+    box-shadow: none !important;
+}
+
+.lokr4q_contentCard:has(.lokr4q_section) .lokr4q_search, .lokr4q_section.lokr4q_commands, .lokr4q_section.lokr4q_questions {
+    border-radius: 0 !important;
+}
+
+.lokr4q_defaultOutput {
+    border-radius: 20px 20px 0 0 !important;
+}
+
+.lokr4q_modal {
+    overflow: visible !important;
+}
+
+.lokr4q_output {
+    border-radius: 0 0 20px 20px !important;
+    position: absolute !important;
+    top: 95px !important;
+}
+
+.lokr4q_search {
+    border-radius: 0 0 20px 20px !important;
 }
 
 .oCvYpa_panel {
@@ -105,19 +134,4 @@ const css = `
 
 #Redesign_BTF_tab_page_320x50, #showroom, #showroom_header_desktop, #promo {
     display: none !important;
-}
-
-.lokr4q_contentCard {
-    transform: rotate(180deg);
-    box-shadow: none !important;
-}
-
-.lokr4q_defaultOutput {
-transform: rotate(180deg);
-    border-radius: 20px 20px 0 0 !important;
-}
-
-.lokr4q_search {
-    border-radius: 0 0 20px 20px !important;
-}
-`;
+}`;
