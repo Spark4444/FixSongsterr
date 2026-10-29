@@ -19,12 +19,30 @@ function computeInboxPopupLeft() {
   return leftOffset;
 }
 
+// Compute the maximum height for the inbox popup based on the window height
+function computeMaxHeightForInboxPopup() {
+  const windowHeight = window.innerHeight;
+  const defaultPopupHeight = 476;
+  const maxAllowedHeight = 556;
+  
+  let adjustedPopupHeight = defaultPopupHeight;
+  
+  if (windowHeight < maxAllowedHeight) {
+    const excessHeight = maxAllowedHeight - windowHeight;
+    adjustedPopupHeight -= excessHeight;
+  }
+
+  return adjustedPopupHeight;
+}
+
 // Defer positioning until after the popup is created by other listeners
 function positionInboxPopup() {
   setTimeout(() => {
     inboxPopupEl = document.querySelector("#inbox-popup");
     if (inboxPopupEl) {
       const popupLeft = computeInboxPopupLeft();
+      const popupHeight = computeMaxHeightForInboxPopup();
+      inboxPopupEl.style.maxHeight = `${popupHeight}px`;
       inboxPopupEl.style.left = `${popupLeft}px`;
     }
   }, 0);
@@ -38,11 +56,3 @@ if (inboxBtn) {
     false,
   );
 }
-// Add resize listener that performs the same repositioning logic as the click listener
-window.addEventListener(
-  "resize",
-  () => {
-    positionInboxPopup();
-  },
-  false,
-);

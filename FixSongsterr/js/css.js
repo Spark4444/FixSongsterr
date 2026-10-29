@@ -54,6 +54,8 @@ const css = `
 
 #help-menu {
     bottom: -165px !important;
+    transform: rotate(180deg);
+    border-radius: 20px !important;
 }
 
 .idrtTa_controls {
@@ -73,7 +75,6 @@ const css = `
 
 #inbox-popup {
     bottom: unset !important;
-    max-height: unset !important;
     top: 60px !important;
 }
 
@@ -86,7 +87,7 @@ const css = `
 
 #panel-favorites, #panel-search, #panel-account, #panel-help, #panel-newtab {
     bottom: 10px !important;
-    top: 96px !important;
+    top: 70px !important;
 }
 
 #panel-favorites, #panel-search, #panel-account, #panel-help, #panel-newtab, *:has(>#tablist) {
@@ -106,4 +107,17 @@ const css = `
     display: none !important;
 }
 
+.lokr4q_contentCard {
+    transform: rotate(180deg);
+    box-shadow: none !important;
+}
+
+.lokr4q_defaultOutput {
+transform: rotate(180deg);
+    border-radius: 20px 20px 0 0 !important;
+}
+
+.lokr4q_search {
+    border-radius: 0 0 20px 20px !important;
+}
 `;
