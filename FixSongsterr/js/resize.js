@@ -3,6 +3,7 @@ window.addEventListener(
   "resize",
   () => {
     positionInboxPopup();
+    positionPopup(".lokr4q_output", 398, 634);
   },
   false,
 );
