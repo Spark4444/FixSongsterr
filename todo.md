@@ -1,1 +1,0 @@
-1. fix the help input field position
