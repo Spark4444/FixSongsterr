@@ -25,7 +25,9 @@ function computePopupLeft(triggerEl, popupEl) {
 
 // Function to update the position of the popup
 function updatePopupPosition() {
-    let popupEl = document.querySelector(".idrtTa_popupsLayer [role='dialog'], #metronome-popup");
+    let popupEl = document.querySelector(
+      ".idrtTa_popupsLayer [role='dialog'], #default-mixer",
+    );
     if (popupEl) {
         let left = computePopupLeft(currentBtn, popupEl);
         popupEl.style.setProperty("left", `${left}px`, "important");

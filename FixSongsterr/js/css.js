@@ -114,12 +114,12 @@ const css = `
     padding: 15px !important;
 }
 
-#panel-favorites, #panel-search, #panel-account, #panel-help, #panel-newtab {
+#panel-favorites, #panel-privacy, #panel-search, #panel-account, #panel-help, #panel-newtab {
     bottom: 10px !important;
     top: 70px !important;
 }
 
-#panel-favorites, #panel-search, #panel-account, #panel-help, #panel-newtab, *:has(>#tablist) {
+#panel-favorites, #panel-privacy, #panel-search, #panel-account, #panel-help, #panel-newtab, *:has(>#tablist) {
     left: 50% !important;
     transform: translateX(-50%) !important;
 }
@@ -134,4 +134,12 @@ const css = `
 
 #Redesign_BTF_tab_page_320x50, #showroom, #showroom_header_desktop, #promo {
     display: none !important;
+}
+
+[role="listbox"] {
+    max-height: calc(50vh - 116.9453125px);
+}
+    
+#default-mixer {
+    width: 513.188px !important;
 }`;

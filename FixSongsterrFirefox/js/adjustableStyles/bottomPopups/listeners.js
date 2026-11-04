@@ -1,20 +1,29 @@
-// Function to set up event listeners for popup buttons and observe popup layer changes
-function setupListeners() {
-  const popupLayerEl = document.querySelector(".idrtTa_popupsLayer");
-
-  if (popupLayerEl) {
-    const popupLayerObserver = new MutationObserver(() => {
+// Reusable function to observe element changes and update popup position
+function observeElement(element) {
+  console.log(element);
+  if (element) {
+    const observer = new MutationObserver(() => {
       if (currentBtn) {
         updatePopupPosition();
       }
     });
 
-    popupLayerObserver.observe(popupLayerEl, {
+    observer.observe(element, {
       childList: true,
       subtree: true,
       attributes: true,
     });
   }
+}
+
+// Function to set up event listeners for popup buttons and observe popup layer changes
+function setupListeners() {
+  // Observe main popup layer
+  observeElement(document.querySelector(".idrtTa_popupsLayer"));
+
+  // Observe mixer container
+  // Because songsterr are retards who split a single popup into a seperate container i have to now track it in a seperate observer
+  observeElement(document.querySelectorAll(".tGl1ea_aboveBarRoot")[1]);
 
   // Click Event listeners for popups
   popupButtons.forEach((btn) => {
