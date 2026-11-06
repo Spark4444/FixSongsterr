@@ -114,12 +114,12 @@ const css = `
     padding: 15px !important;
 }
 
-#panel-favorites, #panel-privacy, #panel-search, #panel-account, #panel-help, #panel-newtab {
+#panel-signin, #panel-favorites, #panel-privacy, #panel-search, #panel-account, #panel-help, #panel-newtab {
     bottom: 10px !important;
     top: 70px !important;
 }
 
-#panel-favorites, #panel-privacy, #panel-search, #panel-account, #panel-help, #panel-newtab, *:has(>#tablist) {
+#panel-signin, #panel-favorites, #panel-privacy, #panel-search, #panel-account, #panel-help, #panel-newtab, *:has(>#tablist) {
     left: 50% !important;
     transform: translateX(-50%) !important;
 }
@@ -142,4 +142,5 @@ const css = `
     
 #default-mixer {
     width: 513.188px !important;
+    border-radius: 20px !important;
 }`;
